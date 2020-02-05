@@ -32,18 +32,19 @@
       .then((csvData) => data = csvData)
       .then(() => makeScatterPlot())
 
+    //This function provides the initial setup of the webpage and enables the dropdown button.
     function makeScatterPlot() {
         plot(data);
-
         document.getElementById("generation-dropdown").addEventListener("change" ,function() {
             changePlot(data);
         })
-
         document.getElementById("legendary-dropdown").addEventListener("change" ,function() {
             changePlot(data);
         })
     }
 
+    //This is the main function for drawing axes, circles, and legends for imported data.
+    //It takes data, the csv format of the pokemon's information, as parameter.
     function plot(data) {
         //Remove the former svg to blank page
         d3.select("svg").remove();
@@ -86,6 +87,9 @@
                          .text("Total");
     }
 
+    //This function changes the plot based on the new data provided by user through
+    //selecting different legendary and generation.
+    //It takes data, the csv format of the pokemon's information, as parameter.
     function changePlot(data) {
         let newData;
         let legendary = d3.select("#legendary-dropdown").node().value;
@@ -103,6 +107,9 @@
         plot(newData);
     }
 
+    //This function returns an object named color with all type1 as the key and all colors
+    //as the value in the provided data.
+    //It takes data, the csv format of the pokemon's information, as parameter.
     function changeColor(data) {
         let color = colors;
         let type1 = data.map((row) => String(row["Type 1"]))
@@ -116,6 +123,8 @@
         return color;
     }
 
+    //This function adds color legends to the webpage for better visualization.
+    //It takes color, the object containning all type1 and color of plotted pokemons, as parameter.
     function addLegends(color) {
         let context = document.getElementById("legends").getContext("2d");
         let n = Object.keys(color).length;
@@ -126,6 +135,8 @@
         }
     }
 
+    //This function calculates and returns the min and max for provided parameters.
+    //It takes def and total, arrays of numbers, as parameters.
     function findMinMax(def, total) {
         return {
             defMin: d3.min(def),
@@ -135,6 +146,8 @@
         }
     }
 
+    //This function draws x and y axes based on the wanted scale parameters.
+    //It takes scaleX and scaleY as parameters.
     function drawAxes(scaleX, scaleY) {
         let xAxis = d3.axisBottom()
             .scale(scaleX)
@@ -148,6 +161,8 @@
             .call(yAxis)
     }
 
+    //This function plots and adds the tooltips for all the pokemons in provided data.
+    //It takes data, the csv format of the pokemon's information, scaleX and scaleY as parameters.
     function plotData(data, scaleX, scaleY) {
         const xMap = function(d) { return scaleX(+d["Sp. Def"]) }
         const yMap = function(d) { return scaleY(+d["Total"]) }
