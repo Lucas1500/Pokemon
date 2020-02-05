@@ -27,26 +27,6 @@
         "Steel": "#BAB0AC",
         "Water": "#D37295"
     }
-    // const colors = [
-    //     {"Bug": "#4E79A7"},
-    //     {"Dark": "#A0CBE8"},
-    //     {"Dragon": "#996633"},
-    //     {"Electric": "#F28E2B"},
-    //     {"Fairy": "#FFBE7D"},
-    //     {"Fighting": "#59A14F"},
-    //     {"Fire": "#8CD17D"},
-    //     {"Flying": "#FF4D88"},
-    //     {"Ghost": "#B6992D"},
-    //     {"Grass": "#499894"},
-    //     {"Ground": "#86BCB6"},
-    //     {"Ice": "#FABFD2"},
-    //     {"Normal": "#E15759"},
-    //     {"Poison": "#FF9D9A"},
-    //     {"Psychic": "#79706E"},
-    //     {"Rock": "#FF99BB"},
-    //     {"Steel": "#BAB0AC"},
-    //     {"Water": "#D37295"}
-    // ]
 
     d3.csv("pokemon.csv")
       .then((csvData) => data = csvData)
