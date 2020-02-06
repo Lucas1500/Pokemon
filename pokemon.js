@@ -111,7 +111,7 @@
     //as the value in the provided data.
     //It takes data, the csv format of the pokemon's information, as parameter.
     function changeColor(data) {
-        let color = colors;
+        const color = Object.assign({},colors);
         let type1 = data.map((row) => String(row["Type 1"]))
         let unique = [...new Set(type1)]
         let allColors = Object.keys(color);
