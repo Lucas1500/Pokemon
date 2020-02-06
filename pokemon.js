@@ -116,7 +116,7 @@
         let unique = [...new Set(type1)]
         let allColors = Object.keys(color);
         for (let i = 0; i < 18; i++) {
-          if (unique.includes(allColors[i]) == "false") {
+          if (unique.includes(allColors[i]) == false) {
               delete color[allColors[i]];
           }
         }
